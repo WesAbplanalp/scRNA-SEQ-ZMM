@@ -6,7 +6,7 @@ date: "12 6 2019"
 
 
 # 1.) Install required Software
-## 1.2.) Install R
+## 1.1.) Install R
 
 1. Windows: <https://cran.rstudio.com/bin/windows/base/>
 2. Mac:<https://cran.rstudio.com/bin/macosx/>
@@ -31,7 +31,7 @@ To install RStudio please follow the link and install the right RStudio for your
 
 ## 1.3.) Install required R-packages
 
-For or training we will need the following R packages, which can be installed by the following R commands
+For training we will need the following R packages, which can be installed by the following R commands
 ```{r}
 # Enter commands in R (or R studio, if installed)
 # Install the devtools package from Hadley Wickham
@@ -64,7 +64,7 @@ library(ggplot2)
 
 #2.) Download The required Datasets
 
-During this course we will analyse 3 datasets. Two are punlished healthy PBMC's from 10x and one is our data, from a heart failure patient of the university clinic Frankfurt.
+During this course we will analyse 3 datasets. Two are published healthy PBMC's from 10x Genomics and one is our data, from a heart failure patient of the university clinic Frankfurt.
 1.) 2700 PBMCs (v1 Chemistry, healthy) 
 *(Details: <https://support.10xgenomics.com/single-cell-gene-expression/datasets/1.1.0/pbmc3k>)
 2.) 5000 PBMCs (V3 Chemistry, healthy) 
@@ -107,18 +107,18 @@ tmp.object <- Read10X(data.dir = "../data/pbmc3k/filtered_gene_bc_matrices/hg19/
 pbmc3k_v1 <- CreateSeuratObject(counts = tmp.object, project = "pbmc3k_v1", min.cells = 3, min.features = 200)
 ```
 
-##3.1.) Pre-processing The Raw data
+##3.1.) Pre-processing the raw data
 
 ###3.1.1.) QC and selecting cells for further analysis
 
 The steps below encompass the standard pre-processing workflow for scRNA-seq data in Seurat. These represent the selection and filtration of cells based on QC metrics, data normalization and scaling, and the detection of highly variable features.
-QC and selecting cells for further analysis
+QC and selecting cells for further analysis.
 
 Seurat allows you to easily explore QC metrics and filter cells based on any user-defined criteria. A few QC metrics commonly used by the community include
   
   *The number of unique genes detected in each cell.
     *Low-quality cells or empty droplets will often have very few genes
-    *Cell doublets or multiplets may exhibit an aberrantly high gene count
+    *Cell doublets or multiplets may exhibit an aberrantly high gene counts
   *Similarly, the total number of molecules detected within a cell (correlates strongly with unique genes)
   *The percentage of reads that map to the mitochondrial genome
     *Low-quality / dying cells often exhibit extensive mitochondrial contamination
